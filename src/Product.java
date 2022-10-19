@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Product {
+public class Product{
 
     private String name;
     private int price;
@@ -44,6 +44,7 @@ public class Product {
             this.ves = ves;
         }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,4 +66,7 @@ public class Product {
                 ", ves=" + ves +
                 '}';
     }
-}
+
+
+    }
+
