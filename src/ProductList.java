@@ -3,18 +3,50 @@ import java.util.Set;
 
 public class ProductList {
 
-    static Set<Product> productList = new HashSet<>();
+    private final Set<Product> products = new HashSet<>();
 
-    public static void addProduct(Product product) {
-        try {
-            if (!productList.contains(product)) {
-                productList.add(product);
-            } else if (product.hashCode() == productList.hashCode()) {
-                throw new RuntimeException("Продукт" + product.getName() + "уже имеется в сумке!");
-            }
-        } catch (RuntimeException e) {
-            System.out.println(e.getMessage());
+    public void addProduct(Product product) {
+        if (!products.add(product)) {
+            System.out.println("Такой продукт есть в списке");
+            throw new IllegalArgumentException();
         }
-
     }
+
+    public void addProduct(String name, Float cost, Float weight) {
+        Product temp = new Product(name, cost, weight);
+        addProduct(temp);
+    }
+
+    public void markAsBought(String name) {
+        for (Product product : products) {
+            if (name.equals(product.getName())) {
+                product.setBought(true);
+            }
+        }
+    }
+
+    public void deleteProduct(String name) {
+        products.removeIf(product -> name.equals(product.getName()));
+    }
+
+    public Float getSum() {
+        float sum = 0;
+        for (Product product : products) {
+            sum += (product.getCost() * product.getWeight());
+        }
+        return sum;
+    }
+
+    @Override
+    public String toString() {
+        var sb = new StringBuilder();
+        for (Product product : products) {
+            sb.append(product.toString());
+        }
+        return sb.toString();
+    }
+
+
+
 }
+
