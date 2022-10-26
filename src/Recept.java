@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Recept {
@@ -5,7 +7,8 @@ public class Recept {
         private final ProductList products;
         private final Float foodCost;
 
-    public Recept(String recipeName, ProductList products) {
+
+    public Recept(String recipeName,ProductList products) {
         if (recipeName == null || recipeName.isBlank()) {
             System.out.println("Не указано название");
             throw new IllegalArgumentException();
