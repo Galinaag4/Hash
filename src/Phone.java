@@ -71,17 +71,11 @@ public class Phone {
     }
 
 
-    public void addMap(String key, Integer value) throws RuntimeException {
-        if (!map.containsKey(key)) {
-            map.put(key, value);
+    public  void addMap(String key,Integer value) throws RuntimeException{
+        if (map.containsKey(key) && map.get(key).equals(value)) {
+            throw new RuntimeException("Такой объект уже есть");
         }
-        if (map.containsKey(key)) {
-            if (map.get(key) != map.get(key)) {
-                map.put(key, value);
-            } else if (map.containsKey(key) && map.containsValue(value)) {
-                throw new RuntimeException("Такой объект уже есть");
-            }
-        }
+        map.put(key, value);
     }
 }
 

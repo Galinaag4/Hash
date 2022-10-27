@@ -7,7 +7,7 @@ public class ProductList {
     private final Map<Product, Float> products = new HashMap<>();
 
     public void addProduct(Product product, Float weight) {
-        if (products.put(product, weight) != null) {
+        if (products.containsKey(product)) {
             System.out.println("Такой продукт есть в списке");
             throw new IllegalArgumentException();
         }
